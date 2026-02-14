@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>For Gugulethu Dube</title>
+    <style>
+        :root { --pink: #ff4d6d; }
+        body { background: #fff5f7; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; padding: 20px; }
+        
+        /* The Bubbles */
+        .bubble-grid { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; justify-content: center; }
+        .bubble {
+
+            width: 60px; height: 60px; background: white; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; font-size: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1); cursor: pointer;
+        }
+        .bubble.hidden { display: none; }
+
+        /* The Letter Box */
+        #letter-box {
+            width: 90%; max-width: 350px; background: white;
+            padding: 25px; border-radius: 15px; border: 1px solid #fce4ec;
+            min-height: 100px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        #text-content { font-family: 'Georgia', serif; line-height: 1.6; font-size: 1.1rem; color: #333; white-space: pre-line; }
+
+    </style>
+</head>
+<body>
+
+    <audio id="bgMusic" loop><source src="song.mp3" type="audio/mpeg"></audio>
+
+    <h2 style="color:var(--pink);">For Gugulethu Dube ❤️</h2>
+    <p style="color:#888; font-size:0.8rem;">Tap the icons below:</p>
+
+    <div class="bubble-grid">
+        <div class="bubble" onclick="reveal(this, 'intro')">✨</div>
+        <div class="bubble" onclick="reveal(this, 'smile')">😊</div>
+        <div class="bubble" onclick="reveal(this, 'voice')">🎤</div>
+        <div class="bubble" 
+
+onclick="reveal(this, 'date')">🍕</div>
+        <div class="bubble" onclick="reveal(this, 'future')">💍</div>
+    </div>
+
+    <div id="letter-box">
+        <div id="text-content">The letter will appear here...</div>
+    </div>
+
+    <script>
+        const library = {
+            intro: "Hey Harry hope you good, so I was thinking of how I was going to write this letter to you, I realized 'I love you' dosen't quite cover it. ",
+            smile: "You aren't just my girlfriend, you're my bestfriend, my peace, the only person i look foward to talk to at the end of every single day. ",
+            voice: "I love how we can talk for hours, even if singakhulumi about anything serious, just hearing your voice sends me places. ",
+            date: "You are so so smart, that is unique and I love that about you, the beauty is just a plus, you're hellaa Beautiful!!.  ",
+            future: "Our future looks exciting, I’m so lucky you’re mine, I love you, even though sometimes it may not show, HAPPY VALENTINES you’re my forever valentine."
+        };
+
+        let fullLetter = "Dearest My lover, Thee Gugulethu B Dube,\n\n";
+        let count = 0;
+
+        function reveal(el, key) {
+            // Play music
+            const music = document.getElementById('bgMusic');
+            music.play().catch(() => {});
+
+            // Hide the tapped bubble
+            el.style.display = 'none';
+
+            // Add the text
+            if(count === 0) { 
+
+document.getElementById('text-content').innerText = ""; }
+            
+            fullLetter += library[key] + "\n\n";
+            document.getElementById('text-content').innerText = fullLetter;
+            count++;
+
+            if(count === 5) {
+                document.getElementById('text-content').innerText += "\nWho is my guy? It's you, always.\n\nLove, Mikey";
+            }
+        }
+    </script>
+</body>
+</html>
